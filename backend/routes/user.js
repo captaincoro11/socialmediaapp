@@ -1,6 +1,6 @@
 const express = require('express');
 const { register,login,followuser, logout, updatepassword, updateProfile, deletemyprofile, myprofile, getUserProfile, getallusers, forgotpassword,getMyPosts, getUserPosts, getAllUsers } = require('../controllers/user');
-const { isAuthenticated } = require('../config/middlewares/auth');
+const { isAuthenticated } = require('../middlewares/auth');
 
 
 

@@ -1,6 +1,6 @@
 const express = require('express');
 const { createPost, likeandunlikepost, deletepost, getpostoffollowing, updatecaption, addcomment, deletecomment } = require('../controllers/post');
-const { isAuthenticated } = require('../config/middlewares/auth');
+const { isAuthenticated } = require('../middlewares/auth');
 const router =express.Router();
 
 router.route('/post/upload').post(isAuthenticated,createPost);

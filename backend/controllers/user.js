@@ -1,6 +1,6 @@
-const user = require('../config/middlewares/models/user');
-const Post = require('../config/middlewares/models/post');
-const {sendemail} = require('../config/middlewares/sendemail')
+const user = require('../middlewares/models/user');
+const Post = require('../middlewares/models/post');
+const {sendemail} = require('../middlewares/sendemail')
 const cloudinary = require('cloudinary')
 
 

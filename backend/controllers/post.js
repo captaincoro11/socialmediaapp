@@ -1,5 +1,5 @@
-const Post = require('../config/middlewares/models/post')
-const user = require('../config/middlewares/models/user')
+const Post = require('../middlewares/models/post')
+const user = require('../middlewares/models/user')
 const cloudinary = require('cloudinary')
 exports.createPost =async(req,res)=>{
 
