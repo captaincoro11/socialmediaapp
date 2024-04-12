@@ -3,8 +3,15 @@ const cookieParser = require('cookie-parser')
 const app = express();
 const cors = require('cors');
 
+const corsConfig = {
+    origin:"*",
+    credential:true,
+    methods:["GET","POST","PUT","DELETE"]
 
-app.use(cors());
+}
+
+
+app.use(cors(corsConfig));
 
 require("dotenv").config({path:'backend/config/config.env'});
 //Using Middlewares
