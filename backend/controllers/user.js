@@ -43,7 +43,7 @@ exports.register = async (req, res) => {
         token,
       });
 
-      localStorage.setItem('token',token)
+      
     } catch (error) {
       res.status(500).json({
         success: false,
@@ -84,7 +84,7 @@ exports.login =async(req,res)=>{
        
         });
 
-        localStorage.setItem('token',token)
+        
 
         
     } catch (error) {
@@ -102,7 +102,7 @@ exports.logout = async (req,res)=>{
             message:"logged out"
         });
 
-        localStorage.removeItem('token');
+    
     } 
     catch (error) {
         res.status(500).json({
