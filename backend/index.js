@@ -12,6 +12,13 @@ const corsConfig = {
 
 
 app.use(cors(corsConfig));
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "https://socialmediaapp-frontend.vercel.app/");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 require("dotenv").config({path:'backend/config/config.env'});
 //Using Middlewares
