@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 exports.isAuthenticated = async(req,res,next)=>{
     try {
-        const {token} = req.cookies || localStorage.getItem('token')
+        const {token} =  localStorage.getItem('token')
         
         
      if(!token){
