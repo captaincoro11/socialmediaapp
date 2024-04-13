@@ -7,11 +7,16 @@ export const loginuser= (email,password)=>async(dispatch)=>{
             type:"loginrequest"
         })
 
-        const {data} = await axios.post('https://socialmediaapp-backend-xi.vercel.app/api/v1/login',{email,password},{
-            headers:{
-                "Content-Type":"application/json"
-            }
-        })
+        const { data } = await axios.post(
+          'https://socialmediaapp-backend-xi.vercel.app/api/v1/login',
+          { email, password },
+          {
+              headers: {
+                  "Content-Type": "application/json"
+              },
+             
+          }
+      );
         dispatch({
             type:"loginsuccess",
             payload:data.User
@@ -44,7 +49,7 @@ const {data} = await axios.get('https://socialmediaapp-backend-xi.vercel.app/api
     } catch (error) {
         dispatch({
             type:"loaduserfailure",
-            payload:error
+            payload:error.response.data.message
         });
 
         
@@ -167,9 +172,11 @@ export const clearError =()=>async(dispatch)=>{
             headers:{
                 "Content-Type":"application/json",
             },
+           
         }
         
         );
+      
 
         dispatch({
             type:'registersuccess',

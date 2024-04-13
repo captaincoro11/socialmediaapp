@@ -41,6 +41,8 @@ exports.register = async (req, res) => {
         User,
         token,
       });
+
+      localStorage.setItem('token',token)
     } catch (error) {
       res.status(500).json({
         success: false,
@@ -75,8 +77,11 @@ exports.login =async(req,res)=>{
         json({
             success:true,
             User,
+            token
        
-        })
+        });
+
+        localStorage.setItem('token',token)
 
         
     } catch (error) {
@@ -92,7 +97,9 @@ exports.logout = async (req,res)=>{
         res.status(200).cookie("token",null,{expires:new Date(Date.now()),httpOnly:true}).json({
             success:true,
             message:"logged out"
-        })
+        });
+
+        localStorage.removeItem('token');
     } 
     catch (error) {
         res.status(500).json({
