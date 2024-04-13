@@ -13,6 +13,7 @@ const corsConfig = {
 
 app.use(cors(corsConfig));
 
+
 require("dotenv").config({path:'backend/config/config.env'});
 //Using Middlewares
 app.use(express.json({limit:'50mb'}));
