@@ -53,5 +53,5 @@
     "webpack": "^5.89.0",
     "webpack-dev-server": "^4.15.1"
   },
-  "proxy": "https://socialmediaapp-backend-xi.vercel.app/"
+  
 }
