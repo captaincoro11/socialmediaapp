@@ -14,6 +14,8 @@ export const loginuser= (email,password)=>async(dispatch)=>{
               headers: {
                   "Content-Type": "application/json"
               },
+
+              withCredentials: true
              
           }
       );
@@ -175,6 +177,8 @@ export const clearError =()=>async(dispatch)=>{
             headers:{
                 "Content-Type":"application/json",
             },
+
+            withCredentials: true
            
         }
         
