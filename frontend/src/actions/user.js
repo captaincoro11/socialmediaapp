@@ -17,6 +17,8 @@ export const loginuser= (email,password)=>async(dispatch)=>{
              
           }
       );
+        const {token} = data;
+        localStorage.setItem("token",token);
         dispatch({
             type:"loginsuccess",
             payload:data.User
@@ -140,6 +142,7 @@ export const clearError =()=>async(dispatch)=>{
       });
   
       await axios.get("https://socialmediaapp-backend-xi.vercel.app/api/v1/logout");
+        localStorage.removeItem("token",token);
   
       dispatch({
         type: "LogoutUserSuccess",
@@ -176,6 +179,9 @@ export const clearError =()=>async(dispatch)=>{
         }
         
         );
+
+          const {token} = data;
+        localStorage.setItem("token",token);
       
 
         dispatch({
