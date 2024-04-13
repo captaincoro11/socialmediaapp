@@ -142,7 +142,7 @@ export const clearError =()=>async(dispatch)=>{
       });
   
       await axios.get("https://socialmediaapp-backend-xi.vercel.app/api/v1/logout");
-        localStorage.removeItem("token",token);
+        localStorage.removeItem("token");
   
       dispatch({
         type: "LogoutUserSuccess",
