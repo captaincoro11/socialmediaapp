@@ -8,7 +8,7 @@ export const loginuser= (email,password)=>async(dispatch)=>{
         })
 
         const { data } = await axios.post(
-          'https://socialmediaapp-backend-xi.vercel.app/api/v1/login',
+          'https://socialmediaapp-backend.vercel.app/api/v1/login',
           { email, password },
           {
               headers: {
@@ -43,7 +43,7 @@ export const loaduser= ()=>async(dispatch)=>{
             type:"loaduserrequest"
         })
 
-const {data} = await axios.get('https://socialmediaapp-backend-xi.vercel.app/api/v1/me')
+const {data} = await axios.get('https://socialmediaapp-backend.vercel.app/api/v1/me')
 
     
         dispatch({
@@ -66,7 +66,7 @@ export const getFollowingPosts = () => async (dispatch) => {
         type: "postOfFollowingRequest",
       });
   
-      const { data } = await axios.get("https://socialmediaapp-backend-xi.vercel.app/api/v1/posts");
+      const { data } = await axios.get("https://socialmediaapp-backend.vercel.app/api/v1/posts");
       dispatch({
         type: "postOfFollowingSuccess",
         payload: data.posts,
@@ -85,7 +85,7 @@ export const getFollowingPosts = () => async (dispatch) => {
         type: "myPostsRequest",
       });
   
-      const { data } = await axios.get("https://socialmediaapp-backend-xi.vercel.app/api/v1/my/posts");
+      const { data } = await axios.get("https://socialmediaapp-backend.vercel.app/api/v1/my/posts");
       dispatch({
         type: "myPostsSuccess",
         payload: data.posts,
@@ -123,7 +123,7 @@ export const clearError =()=>async(dispatch)=>{
         type: "allUsersRequest",
       });
 
-      const { data } = await axios.get(`https://socialmediaapp-backend-xi.vercel.app/api/v1/users?name=${name}`);
+      const { data } = await axios.get(`https://socialmediaapp-backend.vercel.app/api/v1/users?name=${name}`);
       dispatch({
         type: "allUsersSuccess",
         payload: data.Users,
@@ -143,7 +143,7 @@ export const clearError =()=>async(dispatch)=>{
         type: "LogoutUserRequest"
       });
   
-      await axios.get("https://socialmediaapp-backend-xi.vercel.app/api/v1/logout");
+      await axios.get("https://socialmediaapp-backend.vercel.app/api/v1/logout");
   
   
       dispatch({
@@ -170,7 +170,7 @@ export const clearError =()=>async(dispatch)=>{
 
 
 
-        const {data} = await axios.post('https://socialmediaapp-backend-xi.vercel.app/api/v1/register',
+        const {data} = await axios.post('https://socialmediaapp-backend.vercel.app/api/v1/register',
 
         {name,email,password,avatar},
         {
@@ -209,7 +209,7 @@ export const clearError =()=>async(dispatch)=>{
         dispatch({
             type:'updateProfileRequest',
         })
-        const {data}=await axios.put('https://socialmediaapp-backend-xi.vercel.app/api/v1/update/profile',
+        const {data}=await axios.put('https://socialmediaapp-backend.vercel.app/api/v1/update/profile',
         {name,email,avatar},{
             headers:{
                 "Content-type":"applications/json"
@@ -238,7 +238,7 @@ export const updatePassword =
     });
 
     const { data } = await axios.put(
-      "https://socialmediaapp-backend-xi.vercel.app/api/v1/update/password",
+      "https://socialmediaapp-backend.vercel.app/api/v1/update/password",
       { oldPassword, newPassword },
       {
         headers: {
@@ -265,7 +265,7 @@ export const deleteMyProfile = () => async (dispatch) => {
         type: "deleteProfileRequest",
       });
   
-      const { data } = await axios.delete("https://socialmediaapp-backend-xi.vercel.app/api/v1/delete/me");
+      const { data } = await axios.delete("https://socialmediaapp-backend.vercel.app/api/v1/delete/me");
   
       dispatch({
         type: "deleteProfileSuccess",
@@ -287,7 +287,7 @@ export const deleteMyProfile = () => async (dispatch) => {
       });
   
       const { data } = await axios.post(
-        "https://socialmediaapp-backend-xi.vercel.app/api/v1/forgot/password",
+        "https://socialmediaapp-backend.vercel.app/api/v1/forgot/password",
         {
           email,
         },
@@ -317,7 +317,7 @@ export const deleteMyProfile = () => async (dispatch) => {
       });
   
       const { data } = await axios.put(
-        `https://socialmediaapp-backend-xi.vercel.app/api/v1/password/reset/${token}`,
+        `https://socialmediaapp-backend.vercel.app/api/v1/password/reset/${token}`,
         {
           password,
         },
@@ -346,7 +346,7 @@ export const deleteMyProfile = () => async (dispatch) => {
         type: "userPostsRequest",
       });
   
-      const { data } = await axios.get(`https://socialmediaapp-backend-xi.vercel.app/api/v1/userposts/${id}`);
+      const { data } = await axios.get(`https://socialmediaapp-backend.vercel.app/api/v1/userposts/${id}`);
       dispatch({
         type: "userPostsSuccess",
         payload: data.posts,
@@ -365,7 +365,7 @@ export const deleteMyProfile = () => async (dispatch) => {
         type: "userProfileRequest",
       });
   
-      const { data } = await axios.get(`https://socialmediaapp-backend-xi.vercel.app/api/v1/user/${id}`);
+      const { data } = await axios.get(`https://socialmediaapp-backend.vercel.app/api/v1/user/${id}`);
       dispatch({
         type: "userProfileSuccess",
         payload: data.User,
@@ -384,7 +384,7 @@ export const deleteMyProfile = () => async (dispatch) => {
         type: "followUserRequest",
       });
   
-      const { data } = await axios.get(`https://socialmediaapp-backend-xi.vercel.app/api/v1/follow/${id}`);
+      const { data } = await axios.get(`https://socialmediaapp-backend.vercel.app/api/v1/follow/${id}`);
       dispatch({
         type: "followUserSuccess",
         payload: data.message,
