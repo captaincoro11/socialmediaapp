@@ -4,8 +4,8 @@ const app = express();
 const cors = require('cors');
 
 const corsConfig = {
-    origin: "https://socialmediaapp-frontend.vercel.app/",
-    credentials:true,
+    origin: "*",
+    
   
     methods:["GET","POST","PUT","DELETE"]
 
@@ -13,7 +13,7 @@ const corsConfig = {
 
 
 app.use(cors(corsConfig));
-app.options('*', cors(corsConfig)); 
+
 
 
 require("dotenv").config({path:'backend/config/config.env'});
