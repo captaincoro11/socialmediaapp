@@ -3,14 +3,10 @@ const cookieParser = require('cookie-parser')
 const app = express();
 const cors = require('cors');
 
-const corsConfig = {
-    origin:"",
-    methods: ["GET", "POST", "PUT", "DELETE"]
-    // Enable cookies to be sent across origins
-};
 
 
-app.use(cors(corsConfig));
+
+app.use(cors());
 
 
 
