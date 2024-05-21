@@ -4,12 +4,10 @@ const app = express();
 const cors = require('cors');
 
 const corsConfig = {
-    origin: "*",
-    
-  
-    methods:["GET","POST","PUT","DELETE"]
-
-}
+    origin: process.env.CORS_ALLOWED_ORIGINS?.split(',') || '*', // Specify allowed origins in .env file
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // Enable cookies to be sent across origins
+};
 
 
 app.use(cors(corsConfig));
