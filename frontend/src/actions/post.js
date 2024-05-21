@@ -6,7 +6,7 @@ export const likePost = (id) => async (dispatch) => {
       type: "likeRequest",
     });
 
-    const { data } = await axios.get(`https://socialmediaapp-backend-xi.vercel.app/api/v1/post/${id}`);
+    const { data } = await axios.get(`https://socialmediaapp-backend.vercel.app/api/v1/post/${id}`);
     dispatch({
       type: "likeSuccess",
       payload: data.message,
@@ -26,7 +26,7 @@ export const addCommentOnPost = (id, comment) => async (dispatch) => {
     });
 
     const { data } = await axios.put(
-      `https://socialmediaapp-backend-xi.vercel.app/api/v1/post/comment/${id}`,
+      `https://socialmediaapp-backend.vercel.app/api/v1/post/comment/${id}`,
       {
         comment,
       },
@@ -54,7 +54,7 @@ export const deleteCommentOnPost = (id, commentId) => async (dispatch) => {
       type: "deleteCommentRequest",
     });
 
-    const { data } = await axios.delete(`https://socialmediaapp-backend-xi.vercel.app/api/v1/post/comment/${id}`, {
+    const { data } = await axios.delete(`https://socialmediaapp-backend.vercel.app/api/v1/post/comment/${id}`, {
       data: { commentId },
     });
     dispatch({
@@ -76,7 +76,7 @@ export const createNewPost = (caption, image) => async (dispatch) => {
     });
 
     const { data } = await axios.post(
-      `https://socialmediaapp-backend-xi.vercel.app/api/v1/post/upload`,
+      `https://socialmediaapp-backend.vercel.app/api/v1/post/upload`,
       {
         caption,
         image,
@@ -106,7 +106,7 @@ export const updatePost = (caption, id) => async (dispatch) => {
     });
 
     const { data } = await axios.put(
-      `https://socialmediaapp-backend-xi.vercel.app/api/v1/post/${id}`,
+      `https://socialmediaapp-backend.vercel.app/api/v1/post/${id}`,
       {
         caption,
       },
@@ -134,7 +134,7 @@ export const deletePost = (id) => async (dispatch) => {
       type: "deletePostRequest",
     });
 
-    const { data } = await axios.delete(`https://socialmediaapp-backend-xi.vercel.app/api/v1/post/${id}`);
+    const { data } = await axios.delete(`https://socialmediaapp-backend.vercel.app/api/v1/post/${id}`);
     dispatch({
       type: "deletePostSuccess",
       payload: data.message,
