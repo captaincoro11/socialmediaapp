@@ -6,14 +6,10 @@ const jwt = require('jsonwebtoken');
 
 exports.isAuthenticated = async(req,res,next)=>{
     try {
-        const BearerToken = req.headers["authorization"];
-        const [type,token] =  BearerToken.split(' ');
+        const token = req.headers["authorization"];
+       
 
-        if(type!=="Bearer" ){
-            res.status(404).json({
-                message:"Token is not valid"
-            })
-        }
+       
         
         
      if(!token){
