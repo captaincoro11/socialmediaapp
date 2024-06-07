@@ -3,10 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./register.css";
-
 import { registerUser } from "../../actions/user";
-import { enqueueSnackbar,SnackbarProvider } from "notistack";
-
+import { enqueueSnackbar, SnackbarProvider } from "notistack";
 
 const Register = () => {
   const history = useHistory();
@@ -37,19 +35,18 @@ const Register = () => {
     dispatch(registerUser(name, email, password, avatar));
   };
 
-  useEffect(()=>{
-    if(error){
+  useEffect(() => {
+    if (error) {
       enqueueSnackbar(error);
       dispatch({
-        type:"clearErrors"
-      })
+        type: "clearErrors",
+      });
     }
-
-  },[error,dispatch])
+  }, [error, dispatch]);
 
   return (
     <div className="register">
-    <SnackbarProvider/>
+      <SnackbarProvider />
       <form className="registerForm" onSubmit={submitHandler}>
         <Typography variant="h3" style={{ padding: "2vmax" }}>
           Social Aap

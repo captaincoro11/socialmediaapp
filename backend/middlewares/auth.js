@@ -6,7 +6,13 @@ const jwt = require('jsonwebtoken');
 
 exports.isAuthenticated = async(req,res,next)=>{
     try {
-        const {token} =  req.cookies
+        const [type,token] =  req.headers.authorization.split(' ');
+
+        if(type!=="Bearer" ){
+            res.status(404).json({
+                message:"Token is not valid"
+            })
+        }
         
         
      if(!token){
