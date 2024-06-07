@@ -16,6 +16,9 @@ export const loginuser = (email, password) => async (dispatch) => {
       },
     );
 
+    const token = data.token ; 
+    localStorage.setItem("token",token);
+
     dispatch({
       type: "loginsuccess",
       payload: data.User,
@@ -34,13 +37,24 @@ export const loaduser = () => async (dispatch) => {
       type: "loaduserrequest",
     });
 
+    const token = localStorage.getItem("token")
+
     const { data } = await axios.get(
-      "https://socialmediaapp-backend.vercel.app/api/v1/me",
+      "https://socialmediaapp-backend.vercel.app/api/v1/me",{
+      headers:{
+        "Authorization":`Bearer ${token}`
+
+        }
+
+      }
     );
+
+   
 
     dispatch({
       type: "loadusersuccess",
       payload: data.User,
+      
     });
   } catch (error) {
     dispatch({
@@ -111,8 +125,17 @@ export const getAllUsers = (name) => async (dispatch) => {
       type: "allUsersRequest",
     });
 
+    const token = localStorage.getItem("token");
+
+    console.log(token);
+
     const { data } = await axios.get(
-      `https://socialmediaapp-backend.vercel.app/api/v1/users?name=${name}`,
+      `https://socialmediaapp-backend.vercel.app/api/v1/users?name=${name}`,{
+        headers:{
+          "Authorization":`Bearer ${token}`
+          
+
+      }}
     );
     dispatch({
       type: "allUsersSuccess",
@@ -159,14 +182,18 @@ export const registerUser =
         { name, email, password, avatar },
         {
           headers: {
+            
             "Content-Type": "application/json",
           }, 
         },
       );
 
+      const token = data.token ; 
+      localStorage.setItem("token",token);
+
       dispatch({
         type: "registersuccess",
-        payload: data.User,
+        payload: data,
       });
     } catch (error) {
       dispatch({

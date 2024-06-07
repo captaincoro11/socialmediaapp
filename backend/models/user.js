@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
+const dotenv =require('dotenv');
+dotenv.config({});
 const userSchema =new mongoose.Schema({
 
    
@@ -61,7 +63,7 @@ userSchema.methods.matchPassword = async function (password){
 }
 
 userSchema.methods.generateToken = function(){
-    return jwt.sign({_id:this._id},"merakhudkacustomsecretkey")
+    return jwt.sign({_id:this._id},process.env.JWT_SECRET);
 }
 userSchema.methods.getresetpasswordtoken = function (){
 

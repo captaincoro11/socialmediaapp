@@ -1,7 +1,8 @@
 const user = require('../models/user');
 const Post = require('../models/post');
 const {sendemail} = require('../middlewares/sendemail')
-const cloudinary = require('cloudinary')
+const cloudinary = require('cloudinary');
+
 
 
 exports.register = async (req, res) => {
@@ -41,7 +42,7 @@ exports.register = async (req, res) => {
       res.status(201).json({
         success: true,
         User,
-        token:`Bearer ${token}`
+        token:token
       });
 
       
@@ -77,7 +78,7 @@ exports.login =async(req,res)=>{
         res.status(200).json({
             success:true,
             User,
-            token:`Bearer ${token}`,
+            token:token,
        
         });
 

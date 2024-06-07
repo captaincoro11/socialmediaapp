@@ -1,5 +1,7 @@
 const user = require ('../models/user');
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+dotenv.config({});
 
 
 
@@ -16,8 +18,10 @@ exports.isAuthenticated = async(req,res,next)=>{
     
         if (!token) {
             return res.status(401).json({ success: false, message: "Token is missing" });
-        }
-    const decoded  = await jwt.verify(token,"merakhudkacustomsecretkey")
+        };
+
+        console.log("token",token);
+    const decoded  = jwt.verify(token,process.env.JWT_SECRET)
     req.user =await user.findById(decoded._id)
     next();
         
