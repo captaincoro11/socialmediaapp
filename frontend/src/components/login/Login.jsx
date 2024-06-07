@@ -37,6 +37,7 @@ const Login = () => {
     <div className='login'>
     <form className='loginForm' onSubmit={loginHandler}>
     <Typography variant='h3' style={{padding:"2vmax"}}>Social App</Typography>
+        <div>
     <input type="email" placeholder='Email' required value={email} onChange={(e)=>setemail(e.target.value)} />
     <input type="password" placeholder='Password' required value={password} onChange={(e)=>setpassword(e.target.value)} />
     <Link to='/forgot/password'>
@@ -47,6 +48,7 @@ const Login = () => {
         <Typography>New User</Typography>
     </Link>
     <SnackbarProvider/>
+            </div>
     </form>
       
     </div>
