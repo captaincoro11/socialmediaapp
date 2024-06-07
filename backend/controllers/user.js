@@ -41,7 +41,7 @@ exports.register = async (req, res) => {
       res.status(201).json({
         success: true,
         User,
-        token:token,
+        token:`Bearer ${token}`
       });
 
       
@@ -77,7 +77,7 @@ exports.login =async(req,res)=>{
         res.status(200).json({
             success:true,
             User,
-            token:token
+            token:`Bearer ${token}`,
        
         });
 
