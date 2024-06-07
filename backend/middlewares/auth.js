@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 exports.isAuthenticated = async(req,res,next)=>{
     try {
-        const {BearerToken} = req.headers.authorization;
+        const BearerToken = req.headers["authorization"];
         const [type,token] =  BearerToken.split(' ');
 
         if(type!=="Bearer" ){
