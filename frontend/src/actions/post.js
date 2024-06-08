@@ -119,6 +119,8 @@ export const updatePost = (caption, id) => async (dispatch) => {
       type: "updateCaptionRequest",
     });
 
+    const token = localStorage.getItem("token");
+
     const { data } = await axios.put(
       `https://socialmediaapp-backend.vercel.app/api/v1/post/${id}`,
       {
@@ -126,6 +128,7 @@ export const updatePost = (caption, id) => async (dispatch) => {
       },
       {
         headers: {
+          "Authorization":`Bearer ${token}`,
           "Content-Type": "application/json",
         },
       }

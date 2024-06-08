@@ -74,6 +74,9 @@ const Post = ({
     dispatch(updatePost(captionValue, postId));
     dispatch(getMyPosts());
   };
+  
+
+
 
   const deletePostHandler = async () => {
     await dispatch(deletePost(postId));

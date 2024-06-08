@@ -47,15 +47,19 @@ const Account = () => {
     dispatch(getMyPosts());
   }, [dispatch]);
 
+
+
+
+
   useEffect(()=>{
     if(likeError){
-    enqueueSnackbar(likeError)
+    
     dispatch({
       type:"clearErrors"
     })
   }
   if(message){
-    enqueueSnackbar(message)
+   
     dispatch({
       type:"clearMessages"
     })

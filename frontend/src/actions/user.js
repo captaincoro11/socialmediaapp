@@ -258,6 +258,7 @@ export const updateProfile = (name, email, avatar) => async (dispatch) => {
     const token = localStorage.getItem("token")
     const { data } = await axios.put(
       "https://socialmediaapp-backend.vercel.app/api/v1/update/profile",
+      
       { name, email, avatar },
       {
         headers: {

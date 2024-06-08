@@ -121,12 +121,7 @@ const UserProfile = () => {
               <Typography>{user.following.length}</Typography>
             </div>
 
-            <div>
-              <Typography>Posts</Typography>
-              <Typography>{user.posts.length}</Typography>
-            </div>
-
-            {myProfile ? null : (
+          {myProfile ? null : (
               <Button
                 variant="contained"
                 style={{ background: following ? "red" : "" }}
