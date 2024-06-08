@@ -95,13 +95,10 @@ exports.login =async(req,res)=>{
 }
 exports.logout = async (req,res)=>{
     try {
-       
-        localStorage.setItem("token",null);
-
-        res.status(200).json({
+        res.status(200).cookie("token",null,{expires:new Date(Date.now()),httpOnly:true}).json({
             success:true,
-            message:"User Logged Out Successfully"
-        })
+            message:"logged out"
+        });
 
     
     } 

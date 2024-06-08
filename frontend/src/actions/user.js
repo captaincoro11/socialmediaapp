@@ -386,6 +386,8 @@ export const getUserProfile = (id) => async (dispatch) => {
       type: "userProfileRequest",
     });
 
+    const token = localStorage.getItem("token")
+
     const { data } = await axios.get(
       `https://socialmediaapp-backend.vercel.app/api/v1/user/${id}`,
       {
@@ -411,6 +413,8 @@ export const followAndUnfollowUser = (id) => async (dispatch) => {
     dispatch({
       type: "followUserRequest",
     });
+
+    const token = localStorage.getItem("token")
 
     const { data } = await axios.get(
       `https://socialmediaapp-backend.vercel.app/api/v1/follow/${id}`,{
