@@ -134,8 +134,7 @@ export const clearError = () => async (dispatch) => {
     });
   }
 };
-
-export const getAllUsers = (name) => async (dispatch) => {
+export const getAllUsersByName = (name) => async (dispatch) => {
   try {
     dispatch({
       type: "allUsersByNameRequest",
@@ -146,7 +145,7 @@ export const getAllUsers = (name) => async (dispatch) => {
     console.log(token);
 
     const {data} = await axios.get(
-      `https://socialmediaapp-backend.vercel.app/api/v1/getByNameUsers?name=${name}`,{
+      `https://socialmediaapp-backend.vercel.app/api/v1/users?name=${name}`,{
         headers:{
           "Authorization":`Bearer ${token}`
           }}
@@ -158,6 +157,35 @@ export const getAllUsers = (name) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "allUsersByNameFailure",
+      payload: error.response.data.message,
+    });
+  }
+};
+
+
+export const getAllUsers = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: "allUsersRequest",
+    });
+
+    const token = localStorage.getItem("token");
+
+    console.log(token);
+
+    const {data} = await axios.get(
+      `https://socialmediaapp-backend.vercel.app/api/v1/users`,{
+        headers:{
+          "Authorization":`Bearer ${token}`
+          }}
+    );
+    dispatch({
+      type: "allUsersSuccess",
+      payload: data.Users
+    });
+  } catch (error) {
+    dispatch({
+      type: "allUsersFailure",
       payload: error.response.data.message,
     });
   }

@@ -1,7 +1,7 @@
 import { Button, Typography } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUsers } from "../../actions/user";
+import { getAllUsers, getAllUsersByName } from "../../actions/user";
 import User from "../User/User";
 import "./Search.css";
 
@@ -13,7 +13,7 @@ const Search = () => {
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(getAllUsers(name));
+    dispatch(getAllUsersByName(name));
   };
 
   return (

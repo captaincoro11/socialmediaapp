@@ -3,7 +3,7 @@ import Post from "../Post/Post";
 import User from "../User/User";
 import "./home.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUsers, getFollowingPosts } from "../../actions/user";
+import { getAllUsers, getFollowingPosts  } from "../../actions/user";
 import Loader from "../Loader/Loader";
 import { Typography } from "@mui/material";
 import { loaduser } from "../../actions/user";
