@@ -14,13 +14,13 @@ exports.isAuthenticated = async(req,res,next)=>{
             return res.status(401).json({ success: false, message: "Authorization header is missing" });
         }
     
-        const token = authHeader.split(' ')[1];
+        const [type,token] = authHeader.split(' ');
+        console.log(type)
     
         if (!token) {
             return res.status(401).json({ success: false, message: "Token is missing" });
         };
 
-        console.log("token",token);
     const decoded  = jwt.verify(token,"customsecret")
     req.user =await user.findById(decoded._id)
     next();
@@ -28,7 +28,7 @@ exports.isAuthenticated = async(req,res,next)=>{
     } catch (error) {
         res.status(500).json({
             success:false,
-            message:"Please Singup or Login "
+            message:error.message
         })
         
     }

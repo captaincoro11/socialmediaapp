@@ -120,7 +120,6 @@ const Account = () => {
           Logout
         </Button>
 
-        <Link to="/update/profile">Edit Profile</Link>
 
         <Button
           variant="text"

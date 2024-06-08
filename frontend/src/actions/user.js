@@ -153,7 +153,7 @@ export const getAllUsers = (name) => async (dispatch) => {
     );
     dispatch({
       type: "allUsersByNameSuccess",
-      payload: data.Users,
+      payload: data.Users
     });
   } catch (error) {
     dispatch({
