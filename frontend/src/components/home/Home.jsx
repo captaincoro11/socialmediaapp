@@ -6,10 +6,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers, getFollowingPosts } from "../../actions/user";
 import Loader from "../Loader/Loader";
 import { Typography } from "@mui/material";
-
+import { loaduser } from "../../actions/user";
+import toast,{Toaster} from 'react-hot-toast'
 
 const Home = () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchuser = () => {
+      dispatch(loaduser());
+    };
+
+    fetchuser();
+  }, [dispatch]);
 
 
   const { loading, posts, error } = useSelector(
@@ -23,6 +32,12 @@ const Home = () => {
 
   const { error: likeError, message } = useSelector((state) => state.like);
 
+
+
+  if(error){
+
+  }
+
   useEffect(() => {
     dispatch(getFollowingPosts());
     dispatch(getAllUsers());
@@ -34,6 +49,7 @@ const Home = () => {
     <Loader />
   ) : (
     <div className="home">
+    <Toaster/>
       <div className="homeleft">
         {posts && posts.length > 0 ? (
           posts.map((post) => (

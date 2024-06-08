@@ -11,9 +11,18 @@ import {
 import Loader from "../Loader/Loader";
 import Post from "../Post/Post";
 import User from "../User/User";
+import { loaduser } from "../../actions/user";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchuser = () => {
+      dispatch(loaduser());
+    };
+
+    fetchuser();
+  }, [dispatch]);
 
 
   const {
@@ -91,7 +100,7 @@ const UserProfile = () => {
         {user && (
           <>
             <Avatar
-              src={user.avatar.url}
+              src={user.avatar?user.avatar.url:""}
               sx={{ height: "8vmax", width: "8vmax" }}
             />
 
@@ -101,6 +110,7 @@ const UserProfile = () => {
               <button onClick={() => setFollowersToggle(!followersToggle)}>
                 <Typography>Followers</Typography>
               </button>
+
               <Typography>{user.followers.length}</Typography>
             </div>
 
@@ -132,7 +142,7 @@ const UserProfile = () => {
           open={followersToggle}
           onClose={() => setFollowersToggle(!followersToggle)}
         >
-          <div className="DialogBox">
+          <div style={{backgroundColor:"white",width:"auto",padding:"2rem"}}>
             <Typography variant="h4">Followers</Typography>
 
             {user && user.followers.length > 0 ? (

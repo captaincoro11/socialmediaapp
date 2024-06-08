@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Typography, Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { loginuser } from "../../actions/user";
-import { SnackbarProvider, enqueueSnackbar } from "notistack";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
   const [email, setemail] = useState("");
@@ -19,14 +19,16 @@ const Login = () => {
   useEffect(() => {
     if (error) {
       console.log(error)
-      enqueueSnackbar(error);
+      toast.error(error);
       dispatch({
-        type: "clearErrors",
+        type:"clearErrors",
       });
     }
+    
   }, [error, dispatch, loading]);
   return (
     <div className="login">
+    <Toaster/>
       <form className="loginForm" onSubmit={loginHandler}>
         <Typography variant="h3" style={{ padding: "2vmax" }}>
           Social App
@@ -55,7 +57,6 @@ const Login = () => {
           <Link to="/register">
             <Typography>New User</Typography>
           </Link>
-          <SnackbarProvider />
         
       </form>
     </div>

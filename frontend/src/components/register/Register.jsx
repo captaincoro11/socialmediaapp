@@ -4,10 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./register.css";
 import { registerUser } from "../../actions/user";
-import { enqueueSnackbar, SnackbarProvider } from "notistack";
-
+import toast, { Toaster } from 'react-hot-toast';
+import {Loader} from 'react-js-loader'
 const Register = () => {
-  const history = useHistory();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState("");
@@ -37,7 +36,7 @@ const Register = () => {
 
   useEffect(() => {
     if (error) {
-      enqueueSnackbar(error);
+      toast.error(error);
       dispatch({
         type: "clearErrors",
       });
@@ -46,7 +45,7 @@ const Register = () => {
 
   return (
     <div className="register">
-      <SnackbarProvider />
+      <Toaster/>
       <form className="registerForm" onSubmit={submitHandler}>
         <Typography variant="h3" style={{ padding: "2vmax" }}>
           Social Aap
@@ -90,10 +89,13 @@ const Register = () => {
         <Link to="/">
           <Typography>Already Signed Up? Login Now</Typography>
         </Link>
-
-        <Button disabled={loading} type="submit">
+        {
+          loading?<Loader/>:
+          <Button  type="submit">
           Sign Up
         </Button>
+        }
+       
       </form>
     </div>
   );

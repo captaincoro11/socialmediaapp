@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createNewPost } from "../../actions/post";
 import { loaduser } from "../../actions/user";
 import "./NewPost.css";
-import { enqueueSnackbar, SnackbarProvider } from "notistack";
+import toast , {Toaster} from 'react-hot-toast'
 import {
   Circles,
   Grid,
@@ -41,14 +41,14 @@ const NewPost = () => {
 
   useEffect(() => {
     if (error) {
-      enqueueSnackbar(error);
+      toast.error(error);
 
       
       dispatch({ type: "clearErrors" });
     }
 
     if (message) {
-      enqueueSnackbar(message);
+      toast.success(message);
       setImage(null);
       setCaption(" ")
 
@@ -58,7 +58,7 @@ const NewPost = () => {
 
   return (
     <div className="newPost">
-      <SnackbarProvider />
+      <Toaster/>
       <form className="newPostForm" onSubmit={submitHandler}>
         <Typography variant="h3">New Post</Typography>
 

@@ -1,4 +1,4 @@
-import { Avatar, Button, Typography, Dialog } from "@mui/material";
+import { Avatar, Button, Typography, Dialog, Snackbar } from "@mui/material";
 import React, { useEffect } from "react";
 import {
   MoreVert,
@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import "./post.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import toast,{Toaster} from "react-hot-toast";
 import {
   addCommentOnPost,
   deletePost,
@@ -20,6 +21,7 @@ import {
 import { getFollowingPosts, getMyPosts } from "../../actions/user";
 import User from "../User/User";
 import CommentCard from "../CommentCard/CommentCard";
+import { SnackbarProvider, enqueueSnackbar } from "notistack";
 
 const Post = ({
   postId,
@@ -42,6 +44,7 @@ const Post = ({
 
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
+  const {error , loading , message} = useSelector((state)=>state.like)
 
   const handleLike = async () => {
     setLiked(!liked);
@@ -86,8 +89,23 @@ const Post = ({
     });
   }, [likes, user._id]);
 
+  useEffect(() => {
+    if (error) {
+      
+
+      
+      dispatch({ type: "clearErrors" });
+    }
+
+    if (message) {
+     
+      dispatch({ type: "clearMessage" });
+    }
+  }, [message,error,message]);
+
   return (
     <div className="post">
+    
       <div className="postHeader">
         {isAccount ? (
           <Button onClick={()=>setCaptionToggle(!captionToggle)}>
@@ -95,6 +113,7 @@ const Post = ({
           </Button>
         ) : null}
       </div>
+      <Toaster/>
 
       <img style={{borderRadius:"2rem"}} src={postImage} alt="Post" />
 
@@ -159,7 +178,7 @@ const Post = ({
               key={like._id}
               userId={like._id}
               name={like.name}
-              avatar={user.avatar.url}
+              avatar={user.avatar?user.avatar.url:""}
             />
           ))}
         </div>
@@ -192,7 +211,7 @@ const Post = ({
                 key={item._id}
                 userId={item.user._id}
                 name={item.user.name}
-                avatar={user.avatar.url}
+                avatar={user.avatar?user.avatar.url:""}
                 comment={item.comment}
                 commentId={item._id}
               

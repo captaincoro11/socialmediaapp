@@ -9,6 +9,7 @@ import Post from "../Post/Post";
 import User from "../User/User";
 import "./Account.css";
 import { enqueueSnackbar } from "notistack";
+import { loaduser } from "../../actions/user";
 
 const Account = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,13 @@ const Account = () => {
     dispatch(logoutUser());
 
   };
+  useEffect(() => {
+    const fetchuser = () => {
+      dispatch(loaduser());
+    };
+
+    fetchuser();
+  }, [dispatch]);
 
   const deleteProfileHandler = async () => {
     await dispatch(deleteMyProfile());
@@ -83,7 +91,7 @@ const Account = () => {
       </div>
       <div className="accountright">
         <Avatar
-          src={user.avatar.url}
+          src={user.avatar?user.avatar.url:""}
           sx={{ height: "8vmax", width: "8vmax" }}
         />
 
@@ -93,19 +101,19 @@ const Account = () => {
           <button onClick={() => setFollowersToggle(!followersToggle)}>
             <Typography>Followers</Typography>
           </button>
-          <Typography>{user.followers.length}</Typography>
+          <Typography>{user.followers?user.followers.length:0}</Typography>
         </div>
 
         <div>
           <button onClick={() => setFollowingToggle(!followingToggle)}>
             <Typography>Following</Typography>
           </button>
-          <Typography>{user.following.length}</Typography>
+          <Typography>{user.following?user.following.length:0}</Typography>
         </div>
 
         <div>
           <Typography>Posts</Typography>
-          <Typography>{user.posts.length}</Typography>
+          <Typography>{user.posts?user.posts.length:0}</Typography>
         </div>
 
         <Button variant="contained" onClick={logoutHandler}>
@@ -131,7 +139,7 @@ const Account = () => {
           <div className="DialogBox">
             <Typography variant="h4">Followers</Typography>
 
-            {user && user.followers.length > 0 ? (
+            {user.followers && user.followers.length > 0 ? (
               user.followers.map((follower) => (
                 <User
                   key={follower._id}
@@ -155,7 +163,7 @@ const Account = () => {
           <div className="DialogBox">
             <Typography variant="h4">Following</Typography>
 
-            {user && user.following.length > 0 ? (
+            {user.following && user.following.length > 0 ? (
               user.following.map((follow) => (
                 <User
                   key={follow._id}

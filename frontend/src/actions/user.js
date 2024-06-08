@@ -19,9 +19,11 @@ export const loginuser = (email, password) => async (dispatch) => {
     const token = data.token ; 
     localStorage.setItem("token",token);
 
+
     dispatch({
       type: "loginsuccess",
       payload: data.User,
+
     });
   } catch (error) {
     dispatch({
@@ -168,7 +170,7 @@ export const logoutUser = () => async (dispatch) => {
     dispatch({
       type: "LogoutUserRequest",
     });
-    const token = localStorage.getItem("token")
+    const token = localStorage.removeItem("token")
 
     await axios.get("https://socialmediaapp-backend.vercel.app/api/v1/logout",{
       headers:{
@@ -227,11 +229,13 @@ export const updateProfile = (name, email, avatar) => async (dispatch) => {
     dispatch({
       type: "updateProfileRequest",
     });
+    const token = localStorage.getItem("token")
     const { data } = await axios.put(
       "https://socialmediaapp-backend.vercel.app/api/v1/update/profile",
       { name, email, avatar },
       {
         headers: {
+          "Authorization":`Bearer ${token}`,
           "Content-type": "applications/json",
         },
       },
@@ -282,7 +286,7 @@ export const deleteMyProfile = () => async (dispatch) => {
     dispatch({
       type: "deleteProfileRequest",
     });
-    
+
 
     const { data } = await axios.delete(
       "https://socialmediaapp-backend.vercel.app/api/v1/delete/me",
