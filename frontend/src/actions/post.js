@@ -31,14 +31,20 @@ export const addCommentOnPost = (id, comment) => async (dispatch) => {
       type: "addCommentRequest",
     });
 
+
+    const token = localStorage.getItem('token')
+
+
     const { data } = await axios.put(
       `https://socialmediaapp-backend.vercel.app/api/v1/post/comment/${id}`,
+     
       {
         comment,
       },
       {
         headers: {
           "Content-Type": "application/json",
+          "Authorization":`Bearer ${token}`
         },
       }
     );
@@ -81,6 +87,7 @@ export const createNewPost = (caption, image) => async (dispatch) => {
       type: "newPostRequest",
     });
 
+    const token = localStorage.getItem("token");
     const { data } = await axios.post(
       `https://socialmediaapp-backend.vercel.app/api/v1/post/upload`,
       {
@@ -89,6 +96,7 @@ export const createNewPost = (caption, image) => async (dispatch) => {
       },
       {
         headers: {
+          "Authorization":`Bearer ${token}`,
           "Content-Type": "application/json",
         },
       }
@@ -140,7 +148,13 @@ export const deletePost = (id) => async (dispatch) => {
       type: "deletePostRequest",
     });
 
-    const { data } = await axios.delete(`https://socialmediaapp-backend.vercel.app/api/v1/post/${id}`);
+    const token = localStorage.getItem("token")
+
+    const { data } = await axios.delete(`https://socialmediaapp-backend.vercel.app/api/v1/post/${id}`,{
+      headers:{
+        "Authorization":`Bearer ${token}`
+      }
+    });
     dispatch({
       type: "deletePostSuccess",
       payload: data.message,

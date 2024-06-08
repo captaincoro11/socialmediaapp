@@ -24,7 +24,10 @@ function App() {
   const dispatch = useDispatch();
 
   
- 
+  useEffect(() => {
+    dispatch(loaduser());
+  }, [dispatch]);
+
 
   return (
     <Router>

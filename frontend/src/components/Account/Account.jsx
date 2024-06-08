@@ -40,8 +40,7 @@ const Account = () => {
   }, [dispatch]);
 
   useEffect(()=>{
-
-  if(likeError){
+    if(likeError){
     enqueueSnackbar(likeError)
     dispatch({
       type:"clearErrors"

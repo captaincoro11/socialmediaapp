@@ -96,7 +96,7 @@ const Post = ({
         ) : null}
       </div>
 
-      <img src={postImage} alt="Post" />
+      <img style={{borderRadius:"2rem"}} src={postImage} alt="Post" />
 
       <div className="postDetails">
         <Avatar

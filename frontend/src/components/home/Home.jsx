@@ -19,6 +19,7 @@ const Home = () => {
   const { users, loading: usersLoading } = useSelector(
     (state) => state.allUsers
   );
+  
 
   const { error: likeError, message } = useSelector((state) => state.like);
 
@@ -55,11 +56,11 @@ const Home = () => {
       <div className="homeright">
         {users && users.length > 0 ? (
           users.map((user) => (
-            <User
+             <User
               key={user._id}
               userId={user._id}
               name={user.name}
-              avatar={""}
+              avatar={user.avatar?user.avatar.url:""}
             />
           ))
         ) : (

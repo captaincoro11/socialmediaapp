@@ -36,7 +36,7 @@ const CommentCard = ({
     <div className="commentUser">
     <SnackbarProvider/>
       <Link to={`/user/${userId}`}>
-        <img src={avatar} alt={name} />
+        <img src={avatar}   alt={name} />
         <Typography style={{ minWidth: "6vmax" }}>{name}</Typography>
       </Link>
       <Typography>{comment}</Typography>

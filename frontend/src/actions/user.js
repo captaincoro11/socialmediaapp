@@ -70,8 +70,15 @@ export const getFollowingPosts = () => async (dispatch) => {
       type: "postOfFollowingRequest",
     });
 
+    const token = localStorage.getItem('token')
+
     const { data } = await axios.get(
       "https://socialmediaapp-backend.vercel.app/api/v1/posts",
+      {
+        headers:{
+          "Authorization":`Bearer ${token}`
+        }
+      }
     );
     dispatch({
       type: "postOfFollowingSuccess",
@@ -275,6 +282,7 @@ export const deleteMyProfile = () => async (dispatch) => {
     dispatch({
       type: "deleteProfileRequest",
     });
+    
 
     const { data } = await axios.delete(
       "https://socialmediaapp-backend.vercel.app/api/v1/delete/me",
