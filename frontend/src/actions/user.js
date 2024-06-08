@@ -145,8 +145,8 @@ export const getAllUsers = (name) => async (dispatch) => {
 
     console.log(token);
 
-    const { data } = await axios.get(
-      `https://socialmediaapp-backend.vercel.app/api/v1/users?name=${name}`,{
+    const {data} = await axios.get(
+      `https://socialmediaapp-backend.vercel.app/api/v1/getUsersByName?name=${name}`,{
         headers:{
           "Authorization":`Bearer ${token}`
           }}

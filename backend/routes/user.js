@@ -20,7 +20,7 @@ router.route('/userposts/:id').get(isAuthenticated,getUserPosts)
 router.route('/forgot/password').post(isAuthenticated,forgotpassword);
 router.route('/user/:id').get(isAuthenticated,getUserProfile);
 router.route('/users').get(isAuthenticated,getallusers);
-router.route('/users').get(isAuthenticated,getAllUsersByName)
+router.route('/getByNameUsers').get(isAuthenticated,getAllUsersByName)
 router.route('/register').get((req,res)=>{
     res.status(201).json({
         message:"The end is e"

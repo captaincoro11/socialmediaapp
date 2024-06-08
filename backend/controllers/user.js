@@ -470,10 +470,11 @@ exports.getMyPosts = async(req,res)=>{
     }
 }
 exports.getAllUsersByName = async (req, res) => {
+    const name = req.query.name;
     
     try {
       const Users = await user.find({
-        name: { $regex: req.query.name, $options: "i" },
+        name: { $regex: name, $options: "i" },
       });
   
       res.status(200).json({
