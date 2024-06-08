@@ -138,7 +138,7 @@ export const clearError = () => async (dispatch) => {
 export const getAllUsers = (name) => async (dispatch) => {
   try {
     dispatch({
-      type: "allUsersRequest",
+      type: "allUsersByNameRequest",
     });
 
     const token = localStorage.getItem("token");
@@ -149,17 +149,15 @@ export const getAllUsers = (name) => async (dispatch) => {
       `https://socialmediaapp-backend.vercel.app/api/v1/users?name=${name}`,{
         headers:{
           "Authorization":`Bearer ${token}`
-          
-
-      }}
+          }}
     );
     dispatch({
-      type: "allUsersSuccess",
+      type: "allUsersByNameSuccess",
       payload: data.Users,
     });
   } catch (error) {
     dispatch({
-      type: "allUsersFailure",
+      type: "allUsersByNameFailure",
       payload: error.response.data.message,
     });
   }

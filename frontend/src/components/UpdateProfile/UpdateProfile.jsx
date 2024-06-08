@@ -18,7 +18,7 @@ const UpdateProfile = () => {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [avatar, setAvatar] = useState("");
-  const [avatarPrev, setAvatarPrev] = useState('');
+  const [avatarPrev, setAvatarPrev] = useState("");
 
   const dispatch = useDispatch();
 

@@ -121,7 +121,6 @@ const Account = () => {
         </Button>
 
         <Link to="/update/profile">Edit Profile</Link>
-        <Link to="/update/password">Change Password</Link>
 
         <Button
           variant="text"

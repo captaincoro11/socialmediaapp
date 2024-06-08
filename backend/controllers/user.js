@@ -469,7 +469,7 @@ exports.getMyPosts = async(req,res)=>{
         
     }
 }
-exports.getAllUsers = async (req, res) => {
+exports.getAllUsersByName = async (req, res) => {
     try {
       const Users = await user.find({
         name: { $regex: req.query.name, $options: "i" },
@@ -486,6 +486,8 @@ exports.getAllUsers = async (req, res) => {
       });
     }
   };
+
+
 exports.getUserPosts = async(req,res)=>{
     try {
         

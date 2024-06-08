@@ -97,6 +97,16 @@ export const allUsersReducer = createReducer(initialState, (builder) => {
     .addCase('allUsersFailure', (state, action) => {
       state.loading = false;
       state.error = action.payload;
+    })  .addCase('allUsersByNameRequest', (state) => {
+      state.loading = true;
+    })
+    .addCase('allUsersByNameSuccess', (state, action) => {
+      state.loading = false;
+      state.users = action.payload;
+    })
+    .addCase('allUsersByNameFailure', (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
     })
     .addCase('clearErrors', (state) => {
       state.error = null;

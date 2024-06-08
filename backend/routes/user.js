@@ -1,5 +1,5 @@
 const express = require('express');
-const { register,login,followuser, logout, updatepassword, updateProfile, deletemyprofile, myprofile, getUserProfile, getallusers, forgotpassword,getMyPosts, getUserPosts, getAllUsers } = require('../controllers/user');
+const { register,login,followuser, logout, updatepassword, updateProfile, deletemyprofile, myprofile, getUserProfile, getallusers, forgotpassword,getMyPosts, getUserPosts, getAllUsers, getAllUsersByName } = require('../controllers/user');
 const { isAuthenticated } = require('../middlewares/auth');
 
 
@@ -20,7 +20,7 @@ router.route('/userposts/:id').get(isAuthenticated,getUserPosts)
 router.route('/forgot/password').post(isAuthenticated,forgotpassword);
 router.route('/user/:id').get(isAuthenticated,getUserProfile);
 router.route('/users').get(isAuthenticated,getallusers);
-router.route('/api/v1/users?name=${name}').get(isAuthenticated,getAllUsers)
+router.route('/api/v1/users').get(isAuthenticated,getAllUsersByName)
 router.route('/register').get((req,res)=>{
     res.status(201).json({
         message:"The end is e"
