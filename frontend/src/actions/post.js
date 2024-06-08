@@ -6,7 +6,13 @@ export const likePost = (id) => async (dispatch) => {
       type: "likeRequest",
     });
 
-    const { data } = await axios.get(`https://socialmediaapp-backend.vercel.app/api/v1/post/${id}`);
+    const token = localStorage.getItem("token");
+
+    const { data } = await axios.get(`https://socialmediaapp-backend.vercel.app/api/v1/post/${id}`,{
+      headers:{
+        "Authorization":`Bearer ${token}`
+      }
+    });
     dispatch({
       type: "likeSuccess",
       payload: data.message,

@@ -59,7 +59,7 @@ const Home = () => {
               key={user._id}
               userId={user._id}
               name={user.name}
-              avatar={user.avatar.url || ""}
+              avatar={""}
             />
           ))
         ) : (

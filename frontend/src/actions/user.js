@@ -91,8 +91,15 @@ export const getMyPosts = () => async (dispatch) => {
       type: "myPostsRequest",
     });
 
+    const token = localStorage.getItem("token");
+
     const { data } = await axios.get(
       "https://socialmediaapp-backend.vercel.app/api/v1/my/posts",
+      {
+        headers:{
+          "Authorization":`Bearer ${token}`
+        }
+      }
     );
     dispatch({
       type: "myPostsSuccess",
@@ -154,8 +161,13 @@ export const logoutUser = () => async (dispatch) => {
     dispatch({
       type: "LogoutUserRequest",
     });
+    const token = localStorage.getItem("token")
 
-    await axios.get("https://socialmediaapp-backend.vercel.app/api/v1/logout");
+    await axios.get("https://socialmediaapp-backend.vercel.app/api/v1/logout",{
+      headers:{
+        "Authorization":`Bearer ${token}`
+      }
+    });
 
     dispatch({
       type: "LogoutUserSuccess",
@@ -323,7 +335,7 @@ export const resetPassword = (token, password) => async (dispatch) => {
       },
       {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type":"application/json",
         },
       },
     );
@@ -346,8 +358,15 @@ export const getUserPosts = (id) => async (dispatch) => {
       type: "userPostsRequest",
     });
 
+    const token = localStorage.getItem("token");
+
     const { data } = await axios.get(
       `https://socialmediaapp-backend.vercel.app/api/v1/userposts/${id}`,
+      {
+        headers:{
+          "Authorization":`Bearer ${token}`
+        }
+      }
     );
     dispatch({
       type: "userPostsSuccess",
@@ -369,6 +388,11 @@ export const getUserProfile = (id) => async (dispatch) => {
 
     const { data } = await axios.get(
       `https://socialmediaapp-backend.vercel.app/api/v1/user/${id}`,
+      {
+        headers:{
+          "Authorization":`Bearer ${token}`
+        }
+      }
     );
     dispatch({
       type: "userProfileSuccess",
@@ -389,7 +413,11 @@ export const followAndUnfollowUser = (id) => async (dispatch) => {
     });
 
     const { data } = await axios.get(
-      `https://socialmediaapp-backend.vercel.app/api/v1/follow/${id}`,
+      `https://socialmediaapp-backend.vercel.app/api/v1/follow/${id}`,{
+        headers:{
+          "Authorization":`Bearer ${token}`
+        }
+      }
     );
     dispatch({
       type: "followUserSuccess",
